@@ -12,6 +12,7 @@ const config: Config = {
         point: "#27C67C",
         sub: "#1DB981",
         bg: "#151515",
+        subBg: "#242424",
         font: "#C5C5C5",
       },
       backgroundImage: {
