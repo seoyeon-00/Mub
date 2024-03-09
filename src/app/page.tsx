@@ -1,19 +1,13 @@
-import Image from "next/image";
+import MainImage from "@/components/Home/MainImage";
+import RecommendCategory from "@/components/Home/RecommendCategory";
+import MovieList from "@/components/Home/MovieList";
 
 export default function Home() {
   return (
     <div className="w-full">
-      <div className="relative w-full h-[400px] overflow-hidden bg-white">
-        <Image
-          src="/images/mainTemporary.jpg"
-          width={900}
-          height={400}
-          alt={"logo"}
-          placeholder="empty"
-          className="scale-150 translate-y-[60px]"
-        />
-        <div className="w-[60%] xl:w-[80%] h-[400px] absolute top-0 right-0 bg-gradient-to-l from-bg from-10% via-bg via-65% to-transparent to-100%"></div>
-      </div>
+      <MainImage />
+      <RecommendCategory />
+      <MovieList title={"최신 개봉 TOP 10"} />
     </div>
   );
 }
