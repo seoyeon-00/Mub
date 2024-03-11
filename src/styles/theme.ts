@@ -12,6 +12,14 @@ const theme = createTheme({
   typography: {
     fontFamily: roboto.style.fontFamily,
   },
+  palette: {
+    primary: {
+      main: "#27C67C",
+    },
+    secondary: {
+      main: "#1DB981",
+    },
+  },
 });
 
 export default theme;
