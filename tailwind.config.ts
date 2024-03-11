@@ -14,6 +14,7 @@ const config: Config = {
         bg: "#151515",
         subBg: "#242424",
         font: "#C5C5C5",
+        fontSub: "#b5b5b5",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
