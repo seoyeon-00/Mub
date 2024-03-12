@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import { supabase } from "@/libs/supabase/supabase";
 import { FormEvent, useState } from "react";
 import { useInputValidation } from "@/utils/useInputValidation";
+import { toast } from "react-hot-toast";
 
 type inputType = {
   email: string;
@@ -50,8 +51,10 @@ const Signup = () => {
           },
         },
       });
-      if (error) console.error(error);
-      console.log(data);
+
+      if (!error) {
+        toast.success("이메일 인증을 진행해주세요.");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -103,7 +106,7 @@ const Signup = () => {
             name="nickname"
             onChange={onChange}
             error={error.message.nickname !== "" ? true : false}
-            helperText={error.message.nickname}
+            helperText={error.message.password}
           />
         </div>
       </div>
@@ -124,22 +127,5 @@ const CssTextField = styled(TextField)({
   "& label": {
     color: "#575757",
     width: "100%",
-  },
-  "& label.Mui-focused": {
-    color: "#C5C5C5",
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "#aaaaaa",
-  },
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "#aaaaaa",
-    },
-    "&:hover fieldset": {
-      borderColor: "#cdcdce",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#aeaeae",
-    },
   },
 });

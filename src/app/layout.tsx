@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import Sidebar from "@/components/Common/Sidebar";
 import theme from "../styles/theme";
 import "./globals.css";
+import ToasterProvider from "@/providers/ToasterProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ToasterProvider />
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeProvider theme={theme}>
             <Sidebar>{children}</Sidebar>
