@@ -4,12 +4,12 @@ const MainImage = () => {
   return (
     <div className="relative w-full h-[400px] overflow-hidden bg-bg rounded-full">
       <Image
-        src="/images/mainTemporary.jpg"
+        src="/images/hobbit.jpg"
         width={900}
         height={400}
         alt={"logo"}
         placeholder="empty"
-        className="scale-150 translate-y-[60px]"
+        className="scale-100 -translate-y-[30px]"
       />
       <div className="absolute w-[400px] top-[70px] left-[620px] z-10">
         <Image
