@@ -2,14 +2,14 @@ import Image from "next/image";
 
 const MainImage = () => {
   return (
-    <div className="relative w-full h-[400px] overflow-hidden bg-bg">
+    <div className="relative w-full h-[400px] overflow-hidden bg-bg rounded-full">
       <Image
-        src="/images/mainTemporary.jpg"
+        src="/images/hobbit.jpg"
         width={900}
         height={400}
         alt={"logo"}
         placeholder="empty"
-        className="scale-150 translate-y-[60px]"
+        className="scale-100 -translate-y-[30px]"
       />
       <div className="absolute w-[400px] top-[70px] left-[620px] z-10">
         <Image
@@ -28,7 +28,7 @@ const MainImage = () => {
             2012
           </div>
         </div>
-        <div className="mt-3 text-font text-[15px]">
+        <div className="mt-3 text-fontSub text-[15px]">
           호빗족 ‘빌보 배긴스’는 어느 날 갑자기 찾아온 회색의 마법사
           ‘간달프’로부터 뜻밖의 제안을 받는다. 오래 전 난쟁이족의 영토였지만
           무시무시한 용 ‘스마우그’에게 빼앗겨 지금은 황무지로 변한 동쪽의
