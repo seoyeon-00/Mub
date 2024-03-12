@@ -7,6 +7,7 @@ import { supabase } from "@/libs/supabase/supabase";
 import { FormEvent, useState } from "react";
 import { useInputValidation } from "@/utils/useInputValidation";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 type inputType = {
   email: string;
@@ -39,6 +40,8 @@ const Signup = () => {
     status: false,
   });
 
+  const router = useRouter();
+
   const signupHandler = async (e: FormEvent) => {
     e.preventDefault();
     try {
@@ -54,6 +57,7 @@ const Signup = () => {
 
       if (!error) {
         toast.success("이메일 인증을 진행해주세요.");
+        router.push("/signup/success");
       }
     } catch (error) {
       console.error(error);
