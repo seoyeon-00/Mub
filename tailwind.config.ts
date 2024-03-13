@@ -21,6 +21,30 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      animation: {
+        scale: "scale 2s ease-in-out forwards",
+        revealUp: "revealUp 1s ease-in-out forwards",
+      },
+      keyframes: {
+        scale: {
+          "0%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        revealUp: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+      },
     },
   },
   plugins: [],

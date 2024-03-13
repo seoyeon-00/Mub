@@ -7,9 +7,9 @@ interface SidebarProps {
 const Sidebar = ({ children }: SidebarProps) => {
   return (
     <div className="flex h-full">
-      <div className="flex flex-col w-[150px] h-full items-center p-10">
-        <div className="w-[100px] mx-auto">
-          <Image src="/images/logo.png" width={68} height={30} alt={"logo"} />
+      <div className="flex flex-col w-[110px] h-full items-center p-10 fixed bg-subBg">
+        <div className="w-[60px]">
+          <Image src="/images/logo.png" width={78} height={30} alt={"logo"} />
         </div>
         <nav className="mt-[200px]">
           <ul className="flex flex-col gap-20">
@@ -38,7 +38,9 @@ const Sidebar = ({ children }: SidebarProps) => {
           </ul>
         </nav>
       </div>
-      <main className="h-full flex-1 overflow-y-auto">{children}</main>
+      <main className="h-full flex-1 overflow-y-auto ml-[110px]">
+        {children}
+      </main>
     </div>
   );
 };
