@@ -6,6 +6,9 @@ import { styled } from "@mui/material/styles";
 import { supabase } from "@/libs/supabase/supabase";
 import { FormEvent, useState } from "react";
 import { useInputValidation } from "@/utils/useInputValidation";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useSignUp } from "@/hooks/useAuth";
 
 type inputType = {
   email: string;
@@ -38,6 +41,10 @@ const Signup = () => {
     status: false,
   });
 
+  const router = useRouter();
+  //const signupHandler = useSignUp(input);
+  //const signupHandler = useSignUp(input);
+
   const signupHandler = async (e: FormEvent) => {
     e.preventDefault();
     try {
@@ -50,8 +57,11 @@ const Signup = () => {
           },
         },
       });
-      if (error) console.error(error);
-      console.log(data);
+
+      if (!error) {
+        toast.success("이메일 인증을 진행해주세요.");
+        router.push("/signup/success");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -103,12 +113,12 @@ const Signup = () => {
             name="nickname"
             onChange={onChange}
             error={error.message.nickname !== "" ? true : false}
-            helperText={error.message.nickname}
+            helperText={error.message.password}
           />
         </div>
       </div>
       <div className="mt-5 w-full">
-        <Button variant="outlined" onClick={signupHandler}>
+        <Button variant="outlined" onClick={() => useSignUp(input, router)}>
           가입하기
         </Button>
       </div>
@@ -124,22 +134,5 @@ const CssTextField = styled(TextField)({
   "& label": {
     color: "#575757",
     width: "100%",
-  },
-  "& label.Mui-focused": {
-    color: "#C5C5C5",
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "#aaaaaa",
-  },
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "#aaaaaa",
-    },
-    "&:hover fieldset": {
-      borderColor: "#cdcdce",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#aeaeae",
-    },
   },
 });

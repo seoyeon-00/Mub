@@ -1,15 +1,27 @@
+"use client";
+
+import { useUser } from "@/hooks/useUser";
+import useLoginModal from "@/stores/useLoginModal";
 import Image from "next/image";
+import { useEffect } from "react";
 
 interface SidebarProps {
   children: React.ReactNode;
 }
 
 const Sidebar = ({ children }: SidebarProps) => {
+  const { modalOpen } = useLoginModal();
+  const loginModal = () => {
+    modalOpen();
+  };
+
+  const user = useUser();
+
   return (
     <div className="flex h-full">
-      <div className="flex flex-col w-[150px] h-full items-center p-10">
-        <div className="w-[100px] mx-auto">
-          <Image src="/images/logo.png" width={68} height={30} alt={"logo"} />
+      <div className="flex flex-col w-[110px] h-full items-center p-10 fixed bg-subBg">
+        <div className="w-[60px]">
+          <Image src="/images/logo.png" width={78} height={30} alt={"logo"} />
         </div>
         <nav className="mt-[200px]">
           <ul className="flex flex-col gap-20">
@@ -33,12 +45,24 @@ const Sidebar = ({ children }: SidebarProps) => {
               />
             </li>
             <li>
-              <Image src="/icon/user.png" width={24} height={24} alt={"User"} />
+              {!user ? (
+                <Image
+                  src="/icon/user.png"
+                  width={24}
+                  height={24}
+                  alt={"User"}
+                  onClick={loginModal}
+                />
+              ) : (
+                <div>{user.user.nickname}</div>
+              )}
             </li>
           </ul>
         </nav>
       </div>
-      <main className="h-full flex-1 overflow-y-auto">{children}</main>
+      <main className="h-full flex-1 overflow-y-auto ml-[110px]">
+        {children}
+      </main>
     </div>
   );
 };

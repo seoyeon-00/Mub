@@ -6,7 +6,7 @@ type MovieListProps = {
 
 const MovieList = ({ title }: MovieListProps) => {
   return (
-    <div className="w-full">
+    <div className="w-full mb-[45px]">
       <div className="text-xl font-semibold text-white my-6">{title}</div>
       <div>
         <MovieCard />
