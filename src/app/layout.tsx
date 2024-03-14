@@ -7,6 +7,7 @@ import theme from "../styles/theme";
 import "./globals.css";
 import ToasterProvider from "@/providers/ToasterProvider";
 import ModalProvider from "@/providers/ModalProvider";
+import UserProvider from "@/providers/UserProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +26,13 @@ export default function RootLayout({
       <body className={inter.className}>
         <ToasterProvider />
         <ModalProvider />
-        <AppRouterCacheProvider options={{ key: "css" }}>
-          <ThemeProvider theme={theme}>
-            <Sidebar>{children}</Sidebar>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <UserProvider>
+          <AppRouterCacheProvider options={{ key: "css" }}>
+            <ThemeProvider theme={theme}>
+              <Sidebar>{children}</Sidebar>
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </UserProvider>
       </body>
     </html>
   );

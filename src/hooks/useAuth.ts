@@ -69,3 +69,17 @@ export const useSignInWithOAuth = async (router: any, prodiver: any) => {
     console.error(error);
   }
 };
+
+export const useUserLogout = async () => {
+  const { error } = await supabase.auth.signOut();
+
+  return error;
+};
+
+export const getUserInfo = async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return user;
+};

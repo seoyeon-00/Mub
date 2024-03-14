@@ -1,7 +1,9 @@
 "use client";
 
+import { useUser } from "@/hooks/useUser";
 import useLoginModal from "@/stores/useLoginModal";
 import Image from "next/image";
+import { useEffect } from "react";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -12,6 +14,8 @@ const Sidebar = ({ children }: SidebarProps) => {
   const loginModal = () => {
     modalOpen();
   };
+
+  const user = useUser();
 
   return (
     <div className="flex h-full">
@@ -40,8 +44,18 @@ const Sidebar = ({ children }: SidebarProps) => {
                 alt={"Liked"}
               />
             </li>
-            <li onClick={loginModal}>
-              <Image src="/icon/user.png" width={24} height={24} alt={"User"} />
+            <li>
+              {!user ? (
+                <Image
+                  src="/icon/user.png"
+                  width={24}
+                  height={24}
+                  alt={"User"}
+                  onClick={loginModal}
+                />
+              ) : (
+                <div>{user.user.nickname}</div>
+              )}
             </li>
           </ul>
         </nav>
