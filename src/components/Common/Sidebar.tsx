@@ -1,3 +1,6 @@
+"use client";
+
+import useLoginModal from "@/stores/useLoginModal";
 import Image from "next/image";
 
 interface SidebarProps {
@@ -5,6 +8,11 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ children }: SidebarProps) => {
+  const { modalOpen } = useLoginModal();
+  const loginModal = () => {
+    modalOpen();
+  };
+
   return (
     <div className="flex h-full">
       <div className="flex flex-col w-[110px] h-full items-center p-10 fixed bg-subBg">
@@ -32,7 +40,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                 alt={"Liked"}
               />
             </li>
-            <li>
+            <li onClick={loginModal}>
               <Image src="/icon/user.png" width={24} height={24} alt={"User"} />
             </li>
           </ul>

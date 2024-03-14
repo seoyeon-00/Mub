@@ -8,6 +8,7 @@ import { FormEvent, useState } from "react";
 import { useInputValidation } from "@/utils/useInputValidation";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useSignUp } from "@/hooks/useAuth";
 
 type inputType = {
   email: string;
@@ -41,6 +42,8 @@ const Signup = () => {
   });
 
   const router = useRouter();
+  //const signupHandler = useSignUp(input);
+  //const signupHandler = useSignUp(input);
 
   const signupHandler = async (e: FormEvent) => {
     e.preventDefault();
@@ -115,7 +118,7 @@ const Signup = () => {
         </div>
       </div>
       <div className="mt-5 w-full">
-        <Button variant="outlined" onClick={signupHandler}>
+        <Button variant="outlined" onClick={() => useSignUp(input, router)}>
           가입하기
         </Button>
       </div>
