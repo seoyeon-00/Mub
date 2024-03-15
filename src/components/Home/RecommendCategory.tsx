@@ -10,7 +10,7 @@ type categoryProp = {
 
 const RecommendCategory = ({ category }: categoryProp) => {
   return (
-    <div className="p-[30px]">
+    <div className="py-[50px] px-[30px]">
       <ul className="flex gap-5">
         <li className="bg-subBg w-[230px] h-[90px] rounded-md flex items-center justify-center gap-1">
           <span>

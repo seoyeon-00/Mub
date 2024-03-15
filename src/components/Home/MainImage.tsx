@@ -5,16 +5,16 @@ const MainImage = () => {
     <div className="relative w-full h-[460px] overflow-hidden bg-bg rounded-full">
       <Image
         src="/images/hobbit.jpg"
-        width={900}
+        width={1000}
         height={460}
         alt={"logo"}
         placeholder="empty"
         className="scale-100 -translate-y-[30px] animate-scale"
       />
-      <div className="absolute w-[400px] top-[90px] left-[640px] z-10 opacity-0 animate-revealUp delay-2000">
+      <div className="absolute w-[400px] top-[90px] right-[300px] z-10 opacity-0 animate-revealUp delay-2000">
         <Image
           src="/images/hobbit-logo.webp"
-          width={270}
+          width={320}
           height={600}
           alt={"logo"}
           placeholder="empty"
