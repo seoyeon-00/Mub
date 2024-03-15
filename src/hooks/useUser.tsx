@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getUserInfo } from "./useAuth";
+import { getUserInfo } from "../services/useAuth";
 import { UserType } from "@/types/types";
 
 type UserContextType = {
