@@ -8,7 +8,7 @@ import { FormEvent, useState } from "react";
 import { useInputValidation } from "@/utils/useInputValidation";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { useSignUp } from "@/hooks/useAuth";
+import { useSignUp } from "@/services/useAuth";
 
 type inputType = {
   email: string;

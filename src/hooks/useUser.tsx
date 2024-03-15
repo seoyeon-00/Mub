@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getUserInfo } from "./useAuth";
+import { getUserInfo } from "../services/useAuth";
 import { UserType } from "@/types/types";
 
 type UserContextType = {
@@ -16,9 +16,16 @@ export const UserContext = createContext<UserContextType | undefined>(
 );
 
 export const UserContextProvider = ({ children }: any) => {
-  // localStorage에서 AccessToken 가져오기
-  const userString = localStorage.getItem("sb-oidufxfbxtmfkloiiigx-auth-token");
-  const userObj = JSON.parse(userString as string);
+  // 브라우저 환경에서 localStorage 사용
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userString = localStorage.getItem(
+        "sb-oidufxfbxtmfkloiiigx-auth-token"
+      );
+      const userObj = JSON.parse(userString as string);
+      setToken(userObj.access_token);
+    }
+  }, []);
 
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [userData, setUserData] = useState<UserType>({
@@ -26,6 +33,7 @@ export const UserContextProvider = ({ children }: any) => {
     email: null,
     nickname: null,
   });
+  const [token, setToken] = useState();
 
   useEffect(() => {
     setIsLoadingData(true);
@@ -53,7 +61,7 @@ export const UserContextProvider = ({ children }: any) => {
       email: userData.email,
       nickname: userData.nickname,
     },
-    accessToken: userObj?.access_token ?? null,
+    accessToken: token ?? null,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

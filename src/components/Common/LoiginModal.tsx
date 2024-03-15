@@ -8,7 +8,7 @@ import { supabase } from "@/libs/supabase/supabase";
 import Button from "./Button";
 import OAuthButton from "./OAuthButton";
 import GithubIcon from "./icons/GithubIcon";
-import { useSignIn, useSignInWithOAuth } from "@/hooks/useAuth";
+import { useSignIn, useSignInWithOAuth } from "@/services/useAuth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
