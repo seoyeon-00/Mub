@@ -3,7 +3,7 @@
 import { useUser } from "@/hooks/useUser";
 import useLoginModal from "@/stores/useLoginModal";
 import Image from "next/image";
-import { useEffect } from "react";
+import Link from "next/link";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -26,15 +26,24 @@ const Sidebar = ({ children }: SidebarProps) => {
         <nav className="mt-[200px]">
           <ul className="flex flex-col gap-20">
             <li>
-              <Image src="/icon/home.png" width={24} height={24} alt={"Home"} />
+              <Link href="/">
+                <Image
+                  src="/icon/home.png"
+                  width={24}
+                  height={24}
+                  alt={"Home"}
+                />
+              </Link>
             </li>
             <li>
-              <Image
-                src="/icon/search.png"
-                width={24}
-                height={24}
-                alt={"Search"}
-              />
+              <Link href="/search">
+                <Image
+                  src="/icon/search.png"
+                  width={24}
+                  height={24}
+                  alt={"Search"}
+                />
+              </Link>
             </li>
             <li>
               <Image

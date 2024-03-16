@@ -5,7 +5,7 @@ const MainImage = () => {
     <div className="relative w-full h-[460px] overflow-hidden bg-bg rounded-full">
       <Image
         src="/images/hobbit.jpg"
-        width={1000}
+        width={1200}
         height={460}
         alt={"logo"}
         placeholder="empty"
