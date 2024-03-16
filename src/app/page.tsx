@@ -2,7 +2,6 @@ import MainImage from "@/components/Home/MainImage";
 import RecommendCategory from "@/components/Home/RecommendCategory";
 import MovieList from "@/components/Home/MovieList";
 import { getCategory } from "@/services/category";
-import { getPreviousDate } from "@/utils/useDate";
 import {
   getNowPlayingMovie,
   getMovieTopRated,
