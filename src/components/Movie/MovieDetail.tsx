@@ -5,6 +5,7 @@ import { Movie } from "@/types/movie";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Button from "../Common/Button";
+import Loading from "../Common/Loading";
 
 interface MovieDetailProps {
   id: number;
@@ -29,14 +30,14 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
       });
   }, []);
 
-  const genreArray = movieData?.genres.map((item) => {
+  const genreArray = movieData?.genres?.map((item) => {
     return item.name;
   });
 
   return (
     <div className="px-16 pt-[100px]">
       {isLoading ? (
-        <div>로딩중</div>
+        <Loading />
       ) : (
         <div className="text-white">
           <div className="flex">
