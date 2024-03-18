@@ -25,7 +25,6 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
           getMovieVideoById(id),
           getMovieById(id),
         ]);
-
         setVideo(video.results[0]);
         setMovieData(data);
       } catch (error) {
@@ -60,12 +59,14 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
                   allowFullScreen
                 ></iframe>
               ) : (
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}
-                  alt={movieData?.title || ""}
-                  width={600}
-                  height={150}
-                />
+                <div className="w-[600px]">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}
+                    alt={movieData?.title || ""}
+                    width={600}
+                    height={150}
+                  />
+                </div>
               )}
             </div>
             <div className="px-10 flex flex-col justify-between">
