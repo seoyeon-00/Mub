@@ -1,9 +1,9 @@
-import SearchTopContainer from "@/components/Search/SearchContainer";
+import SearchContainer from "@/components/Search/SearchContainer";
 
 const Search = () => {
   return (
     <>
-      <SearchTopContainer />
+      <SearchContainer />
     </>
   );
 };

@@ -10,7 +10,7 @@ type SearchListProps = {
 const SearchList = ({ data, search }: SearchListProps) => {
   return (
     <div className="px-16">
-      <h1 className="font-medium text-2xl">검색 결과</h1>
+      <h1 className="font-medium text-xl">검색 결과</h1>
       {search !== "" ? (
         <div className="text-fontGray mt-1">
           <span className="text-font font-semibold">{search}</span>에 대한 검색

@@ -25,8 +25,6 @@ const SearchContainer = () => {
     }
   };
 
-  console.log(searchData);
-
   return (
     <>
       <div className="relative w-full h-[430px] overflow-hidden">

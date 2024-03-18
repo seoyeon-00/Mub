@@ -19,7 +19,7 @@ const Sidebar = ({ children }: SidebarProps) => {
 
   return (
     <div className="flex h-full">
-      <div className="flex flex-col w-[110px] h-full items-center p-10 fixed bg-subBg">
+      <div className="flex flex-col w-[110px] h-full items-center p-10 fixed bg-bg">
         <div className="w-[60px]">
           <Image src="/images/logo.png" width={78} height={30} alt={"logo"} />
         </div>
