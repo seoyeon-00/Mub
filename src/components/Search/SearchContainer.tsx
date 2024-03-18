@@ -30,7 +30,7 @@ const SearchContainer = () => {
       <div className="relative w-full h-[430px] overflow-hidden">
         <img
           src="/images/starwars.jpg"
-          className="w-full"
+          className="w-full opacity-35"
           alt="search-background"
         />
         <div className="w-full h-[400px] absolute bottom-0 bg-gradient-to-t from-bg from-0% to-transparent to-100%"></div>

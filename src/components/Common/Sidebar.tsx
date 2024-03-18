@@ -63,7 +63,9 @@ const Sidebar = ({ children }: SidebarProps) => {
                   onClick={loginModal}
                 />
               ) : (
-                <div>{user.user.nickname}</div>
+                <Link href="/mypage">
+                  <div>{user.user.nickname}</div>
+                </Link>
               )}
             </li>
           </ul>

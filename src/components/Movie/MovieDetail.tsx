@@ -1,10 +1,11 @@
 "use client";
 
-import { getMovieById } from "@/services/movie";
-import { Movie } from "@/types/movie";
+import { getMovieById, getMovieVideoById } from "@/services/movie";
+import { Movie, MovieVideo } from "@/types/movie";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Button from "../Common/Button";
+import Loading from "../Common/Loading";
 
 interface MovieDetailProps {
   id: number;
@@ -12,40 +13,62 @@ interface MovieDetailProps {
 
 const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [movieData, setMovieData] = useState<Movie | undefined>(undefined);
+  const [movieData, setMovieData] = useState<Movie | null>(null);
+  const [video, setVideo] = useState<MovieVideo | null>(null);
 
   useEffect(() => {
     setIsLoading(true);
-    getMovieById(id)
-      .then((result) => {
-        const data = result;
+
+    const fetch = async () => {
+      try {
+        const [video, data] = await Promise.all([
+          getMovieVideoById(id),
+          getMovieById(id),
+        ]);
+        setVideo(video.results[0]);
         setMovieData(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
+      } catch (error) {
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetch();
   }, []);
 
-  const genreArray = movieData?.genres.map((item) => {
+  const genreArray = movieData?.genres?.map((item) => {
     return item.name;
   });
 
   return (
     <div className="px-16 pt-[100px]">
       {isLoading ? (
-        <div>로딩중</div>
+        <Loading />
       ) : (
         <div className="text-white">
           <div className="flex">
-            <Image
-              src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}
-              alt={movieData?.title || ""}
-              width={600}
-              height={150}
-            />
+            <div className="w-[600px]">
+              {video ? (
+                <iframe
+                  width="600"
+                  height="300"
+                  src={`https://www.youtube.com/embed/${video?.key}`}
+                  title={`${video.name}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <div className="w-[600px]">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}
+                    alt={movieData?.title || ""}
+                    width={600}
+                    height={150}
+                  />
+                </div>
+              )}
+            </div>
             <div className="px-10 flex flex-col justify-between">
               <div className="font-bold text-2xl">
                 <span className="inline-block mr-2">{movieData?.title}</span>
