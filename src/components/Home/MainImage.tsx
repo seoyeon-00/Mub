@@ -11,7 +11,7 @@ const MainImage = () => {
         placeholder="empty"
         className="scale-100 -translate-y-[30px] animate-scale"
       />
-      <div className="absolute w-[400px] top-[90px] right-[300px] z-10 opacity-0 animate-revealUp delay-2000">
+      <div className="absolute w-[400px] top-[90px] right-[250px] z-10 opacity-0 animate-revealUp delay-2000">
         <Image
           src="/images/hobbit-logo.webp"
           width={320}
@@ -35,7 +35,7 @@ const MainImage = () => {
           ‘외로운 산’ 에레보르 왕국을 되찾기 위해 함께 떠나자는 것.
         </div>
       </div>
-      <div className="w-[60%] xl:w-[90%] h-[460px] absolute top-0 right-0 bg-gradient-to-l from-bg from-10% via-bg via-40% to-transparent to-100%"></div>
+      <div className="w-[60%] xl:w-[90%] h-[460px] absolute top-0 right-0 bg-gradient-to-l from-bg from-10% via-bg via-30% to-transparent to-100%"></div>
     </div>
   );
 };

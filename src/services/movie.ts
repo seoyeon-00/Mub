@@ -102,3 +102,25 @@ export const getSearchMovie = async (query: string, page: number) => {
     console.error(error);
   }
 };
+
+export const getMovieById = async (id: number) => {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?language=ko`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      const movieData = await response.json();
+      return movieData;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
