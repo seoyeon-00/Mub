@@ -5,10 +5,12 @@ import Button from "../Common/Button";
 import { useUserLogout } from "@/services/useAuth";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import useProfileModal from "@/stores/useProfileModal";
 
 const Profile = () => {
   const user = useUser();
   const router = useRouter();
+  const { modalOpen } = useProfileModal();
 
   const logoutHandler = async () => {
     await useUserLogout();
@@ -27,7 +29,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex flex-col w-[10%] gap-2">
-          <Button text="프로필 변경" onClick={() => {}} />
+          <Button text="프로필 변경" onClick={() => modalOpen()} />
           <Button text="로그아웃" onClick={logoutHandler} />
         </div>
       </div>
