@@ -16,6 +16,7 @@ const Sidebar = ({ children }: SidebarProps) => {
   };
 
   const user = useUser();
+  console.log(user);
 
   return (
     <div className="flex h-full">
@@ -54,7 +55,7 @@ const Sidebar = ({ children }: SidebarProps) => {
               />
             </li>
             <li>
-              {!user ? (
+              {!user.accessToken ? (
                 <Image
                   src="/icon/user.png"
                   width={24}

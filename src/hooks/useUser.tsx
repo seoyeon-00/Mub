@@ -22,7 +22,7 @@ export const UserContextProvider = ({ children }: any) => {
       const userString = localStorage.getItem(
         "sb-oidufxfbxtmfkloiiigx-auth-token"
       );
-      const userObj = JSON.parse(userString as string);
+      const userObj = JSON.parse(userString as string) || "";
       setToken(userObj.access_token);
     }
   }, []);
