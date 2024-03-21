@@ -6,6 +6,7 @@ import { useUserLogout } from "@/services/useAuth";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import useProfileModal from "@/stores/useProfileModal";
+import Image from "next/image";
 
 const Profile = () => {
   const user = useUser();
@@ -22,7 +23,14 @@ const Profile = () => {
     <>
       <div className="flex bg-subBg p-10 justify-between rounded-md">
         <div className="flex">
-          <div className="w-[100px] h-[100px] bg-point rounded-full"></div>
+          <div className="w-[100px] h-[100px] bg-transparent rounded-full">
+            <Image
+              src={user.user.profile || ""}
+              width={120}
+              height={120}
+              alt={"User"}
+            />
+          </div>
           <div className="px-10 w-[50%]">
             <div className=" text-fontGray">{user.user.email}</div>
             <div className="font-medium text-lg">{user.user.nickname}</div>
