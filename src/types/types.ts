@@ -4,6 +4,7 @@ export interface UserType {
   nickname: string | null;
   view?: string[] | null;
   admin?: boolean | null;
+  profile: string | null;
 }
 
 export interface Category {
@@ -12,4 +13,9 @@ export interface Category {
   movie: string[];
   imageUrl: string;
   create_at?: string;
+}
+
+export interface Profile {
+  id: string;
+  image_url: string;
 }

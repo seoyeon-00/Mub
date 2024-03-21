@@ -7,5 +7,5 @@ export const getCategory = async (): Promise<any> => {
 
   if (error) console.log("error", error);
 
-  return categories || ["오잉"];
+  return categories || [];
 };

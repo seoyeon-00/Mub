@@ -1,12 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserInfo } from "../services/useAuth";
 import { UserType } from "@/types/types";
+import { getUserById } from "@/services/user";
 
 type UserContextType = {
   user: {
     id: string | null;
     email: string | null;
     nickname: string | null;
+    profile: string | null;
   };
   accessToken: string | null;
 };
@@ -32,18 +34,21 @@ export const UserContextProvider = ({ children }: any) => {
     id: null,
     email: null,
     nickname: null,
+    profile: null,
   });
   const [token, setToken] = useState();
 
   useEffect(() => {
     setIsLoadingData(true);
     getUserInfo()
-      .then((user) => {
+      .then(async (user) => {
         if (user) {
+          const userData = await getUserById(user.id);
           setUserData({
             id: user.id,
             email: user.email ?? null,
             nickname: user.user_metadata?.nickname ?? null,
+            profile: userData[0].profile_image.image_url,
           });
         }
       })
@@ -60,6 +65,7 @@ export const UserContextProvider = ({ children }: any) => {
       id: userData.id,
       email: userData.email,
       nickname: userData.nickname,
+      profile: userData.profile,
     },
     accessToken: token ?? null,
   };

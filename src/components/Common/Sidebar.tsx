@@ -16,16 +16,15 @@ const Sidebar = ({ children }: SidebarProps) => {
   };
 
   const user = useUser();
-  console.log(user);
 
   return (
     <div className="flex h-full">
-      <div className="flex flex-col w-[110px] h-full items-center p-10 fixed bg-bg">
-        <div className="w-[60px]">
+      <div className="flex flex-col w-[110px] h-full items-center fixed bg-bg">
+        <div className="w-[60px] mt-10">
           <Image src="/images/logo.png" width={78} height={30} alt={"logo"} />
         </div>
         <nav className="mt-[200px]">
-          <ul className="flex flex-col gap-20">
+          <ul className="flex flex-col gap-20 items-center">
             <li>
               <Link href="/">
                 <Image
@@ -65,7 +64,12 @@ const Sidebar = ({ children }: SidebarProps) => {
                 />
               ) : (
                 <Link href="/mypage">
-                  <div>{user.user.nickname}</div>
+                  <Image
+                    src={user.user.profile || ""}
+                    width={60}
+                    height={60}
+                    alt={"User"}
+                  />
                 </Link>
               )}
             </li>
