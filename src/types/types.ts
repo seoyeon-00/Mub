@@ -14,3 +14,8 @@ export interface Category {
   imageUrl: string;
   create_at?: string;
 }
+
+export interface Profile {
+  id: string;
+  image_url: string;
+}
