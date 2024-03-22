@@ -8,7 +8,10 @@ type UserContextType = {
     id: string | null;
     email: string | null;
     nickname: string | null;
-    profile: string | null;
+    profile: {
+      id: string | null;
+      image_url: string | null;
+    };
   };
   accessToken: string | null;
 };
@@ -34,7 +37,10 @@ export const UserContextProvider = ({ children }: any) => {
     id: null,
     email: null,
     nickname: null,
-    profile: null,
+    profile: {
+      id: null,
+      image_url: null,
+    },
   });
   const [token, setToken] = useState();
 
@@ -48,7 +54,10 @@ export const UserContextProvider = ({ children }: any) => {
             id: user.id,
             email: user.email ?? null,
             nickname: user.user_metadata?.nickname ?? null,
-            profile: userData[0].profile_image.image_url,
+            profile: {
+              id: userData[0].profile_image.profile_images,
+              image_url: userData[0].profile_image.image_url,
+            },
           });
         }
       })
@@ -58,7 +67,7 @@ export const UserContextProvider = ({ children }: any) => {
       .finally(() => {
         setIsLoadingData(false);
       });
-  }, []);
+  }, [userData]);
 
   const value = {
     user: {

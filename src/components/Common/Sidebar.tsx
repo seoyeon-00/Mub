@@ -63,14 +63,16 @@ const Sidebar = ({ children }: SidebarProps) => {
                   onClick={loginModal}
                 />
               ) : (
-                <Link href="/mypage">
-                  <Image
-                    src={user.user.profile || ""}
-                    width={60}
-                    height={60}
-                    alt={"User"}
-                  />
-                </Link>
+                <div className="w-[55px] rounded-full overflow-hidden">
+                  <Link href="/mypage">
+                    <Image
+                      src={user.user.profile.image_url || ""}
+                      width={55}
+                      height={55}
+                      alt={"User"}
+                    />
+                  </Link>
+                </div>
               )}
             </li>
           </ul>

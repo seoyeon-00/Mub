@@ -23,9 +23,9 @@ const Profile = () => {
     <>
       <div className="flex bg-subBg p-10 justify-between rounded-md">
         <div className="flex">
-          <div className="w-[100px] h-[100px] bg-transparent rounded-full">
+          <div className="w-[100px] h-[100px] bg-transparent rounded-full overflow-hidden">
             <Image
-              src={user.user.profile || ""}
+              src={user.user.profile.image_url || ""}
               width={120}
               height={120}
               alt={"User"}

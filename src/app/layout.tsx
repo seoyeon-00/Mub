@@ -24,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ToasterProvider />
-        <ModalProvider />
         <UserProvider>
+          <ToasterProvider />
+          <ModalProvider />
           <AppRouterCacheProvider options={{ key: "css" }}>
             <ThemeProvider theme={theme}>
               <Sidebar>{children}</Sidebar>
