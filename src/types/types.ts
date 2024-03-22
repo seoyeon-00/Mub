@@ -4,7 +4,10 @@ export interface UserType {
   nickname: string | null;
   view?: string[] | null;
   admin?: boolean | null;
-  profile: string | null;
+  profile: {
+    id: string | null;
+    image_url: string | null;
+  };
 }
 
 export interface Category {
