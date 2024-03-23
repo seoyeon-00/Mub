@@ -1,6 +1,7 @@
 "use client";
 
 import { useUser } from "@/hooks/useUser";
+import Skeleton from "@mui/material/Skeleton";
 import useLoginModal from "@/stores/useLoginModal";
 import Image from "next/image";
 import Link from "next/link";
@@ -65,12 +66,16 @@ const Sidebar = ({ children }: SidebarProps) => {
               ) : (
                 <div className="w-[55px] rounded-full overflow-hidden">
                   <Link href="/mypage">
-                    <Image
-                      src={user.user.profile.image_url || ""}
-                      width={55}
-                      height={55}
-                      alt={"User"}
-                    />
+                    {user.user.profile.image_url ? (
+                      <Image
+                        src={user.user.profile.image_url}
+                        width={55}
+                        height={55}
+                        alt={"User"}
+                      />
+                    ) : (
+                      <Skeleton variant="circular" width={55} height={55} />
+                    )}
                   </Link>
                 </div>
               )}
