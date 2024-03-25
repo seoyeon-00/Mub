@@ -8,7 +8,7 @@ type UserContextType = {
     id: string | null;
     email: string | null;
     nickname: string | null;
-    likes: string[] | null | undefined;
+    likes: string[] | null;
     profile: {
       id: string | null;
       image_url: string | null;
