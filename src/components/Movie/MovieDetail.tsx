@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Button from "../Common/Button";
 import Loading from "../Common/Loading";
 import useMovieLike from "@/hooks/useMovieLike";
+import Skeleton from "@mui/material/Skeleton";
 
 interface MovieDetailProps {
   id: number;
@@ -60,14 +61,19 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 ></iframe>
-              ) : (
+              ) : movieData ? (
                 <div className="w-[600px]">
                   <Image
                     src={`https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}`}
                     alt={movieData?.title || ""}
                     width={600}
                     height={150}
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 100vw"
                   />
+                </div>
+              ) : (
+                <div className="w-[600px]">
+                  <Skeleton variant="rounded" width={600} height={300} />
                 </div>
               )}
             </div>

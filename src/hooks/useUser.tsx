@@ -71,8 +71,8 @@ export const UserContextProvider = ({ children }: any) => {
       .finally(() => {
         setIsLoadingData(false);
       });
-  }, [userData]);
-  // }, []);
+    // }, [userData]);
+  }, []);
 
   const value = {
     user: {

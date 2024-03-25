@@ -33,6 +33,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                   width={24}
                   height={24}
                   alt={"Home"}
+                  style={{ width: "24px", height: "24px" }}
                 />
               </Link>
             </li>
@@ -52,6 +53,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                 width={24}
                 height={24}
                 alt={"Liked"}
+                style={{ width: "24px", height: "24px" }}
               />
             </li>
             <li>
