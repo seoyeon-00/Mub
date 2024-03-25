@@ -65,11 +65,11 @@ const ProfileModal = () => {
               <div
                 className={`${
                   user.user.profile.image_url === item.image_url
-                    ? "absolute w-8 h-4 top-0 left-0 text-xs bg-point text-white text-center"
+                    ? "absolute w-10 h-4 top-0 left-0 text-xs bg-point text-white text-center"
                     : "absolute top-0 left-0 opacity-0"
                 }`}
               >
-                기본
+                사용중
               </div>
               <Image
                 src={item.image_url}

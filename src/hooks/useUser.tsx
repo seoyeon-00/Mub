@@ -8,6 +8,7 @@ type UserContextType = {
     id: string | null;
     email: string | null;
     nickname: string | null;
+    likes: string[] | null | undefined;
     profile: {
       id: string | null;
       image_url: string | null;
@@ -37,6 +38,7 @@ export const UserContextProvider = ({ children }: any) => {
     id: null,
     email: null,
     nickname: null,
+    likes: null,
     profile: {
       id: null,
       image_url: null,
@@ -44,6 +46,7 @@ export const UserContextProvider = ({ children }: any) => {
   });
   const [token, setToken] = useState();
 
+  console.log(userData);
   useEffect(() => {
     setIsLoadingData(true);
     getUserInfo()
@@ -54,6 +57,7 @@ export const UserContextProvider = ({ children }: any) => {
             id: user.id,
             email: user.email ?? null,
             nickname: user.user_metadata?.nickname ?? null,
+            likes: userData[0].likes,
             profile: {
               id: userData[0].profile_image.profile_images,
               image_url: userData[0].profile_image.image_url,
@@ -68,12 +72,14 @@ export const UserContextProvider = ({ children }: any) => {
         setIsLoadingData(false);
       });
   }, [userData]);
+  // }, []);
 
   const value = {
     user: {
       id: userData.id,
       email: userData.email,
       nickname: userData.nickname,
+      likes: userData.likes,
       profile: userData.profile,
     },
     accessToken: token ?? null,

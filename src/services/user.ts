@@ -28,3 +28,17 @@ export const updateUserProfile = async (
 
   return user;
 };
+
+export const updateLikes = async (
+  uuid: string,
+  arr: string[]
+): Promise<any> => {
+  const { data: user, error } = await supabase
+    .from("user")
+    .update({ likes: arr })
+    .eq("id", uuid)
+    .select();
+
+  if (error) console.log("error", error);
+  return user;
+};

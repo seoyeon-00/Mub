@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Button from "../Common/Button";
 import Loading from "../Common/Loading";
+import useMovieLike from "@/hooks/useMovieLike";
 
 interface MovieDetailProps {
   id: number;
@@ -40,6 +41,8 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
     return item.name;
   });
 
+  const { checkLikes, likesHandler } = useMovieLike({ id });
+
   return (
     <div className="px-16 pt-[100px]">
       {isLoading ? (
@@ -54,7 +57,6 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
                   height="300"
                   src={`https://www.youtube.com/embed/${video?.key}`}
                   title={`${video.name}`}
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 ></iframe>
@@ -87,7 +89,11 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
               </div>
               <div className="flex gap-2">
                 <Button text={"보러가기"} onClick={() => {}}></Button>
-                <Button text={"좋아요"} onClick={() => {}}></Button>
+                {!checkLikes ? (
+                  <Button text={"좋아요"} onClick={likesHandler}></Button>
+                ) : (
+                  <Button text={"좋아요 해제"} onClick={likesHandler}></Button>
+                )}
               </div>
             </div>
           </div>
