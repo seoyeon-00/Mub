@@ -33,6 +33,7 @@ const Sidebar = ({ children }: SidebarProps) => {
                   width={24}
                   height={24}
                   alt={"Home"}
+                  style={{ width: "24px", height: "24px" }}
                 />
               </Link>
             </li>
@@ -47,12 +48,15 @@ const Sidebar = ({ children }: SidebarProps) => {
               </Link>
             </li>
             <li>
-              <Image
-                src="/icon/heart.png"
-                width={24}
-                height={24}
-                alt={"Liked"}
-              />
+              <Link href="/likes">
+                <Image
+                  src="/icon/heart.png"
+                  width={24}
+                  height={24}
+                  alt={"Liked"}
+                  style={{ width: "24px", height: "24px" }}
+                />
+              </Link>
             </li>
             <li>
               {!user.accessToken ? (

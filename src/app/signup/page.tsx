@@ -42,8 +42,6 @@ const Signup = () => {
   });
 
   const router = useRouter();
-  //const signupHandler = useSignUp(input);
-  //const signupHandler = useSignUp(input);
 
   const signupHandler = async (e: FormEvent) => {
     e.preventDefault();

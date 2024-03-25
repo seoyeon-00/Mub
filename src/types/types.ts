@@ -2,7 +2,7 @@ export interface UserType {
   id: string | null;
   email: string | null;
   nickname: string | null;
-  view?: string[] | null;
+  likes: string[] | null;
   admin?: boolean | null;
   profile: {
     id: string | null;
