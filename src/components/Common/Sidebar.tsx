@@ -68,17 +68,17 @@ const Sidebar = ({ children }: SidebarProps) => {
                   onClick={loginModal}
                 />
               ) : (
-                <div className="w-[55px] rounded-full overflow-hidden">
+                <div className="w-[50px] rounded-full overflow-hidden">
                   <Link href="/mypage">
                     {user.user.profile.image_url ? (
                       <Image
                         src={user.user.profile.image_url}
-                        width={55}
-                        height={55}
+                        width={50}
+                        height={50}
                         alt={"User"}
                       />
                     ) : (
-                      <Skeleton variant="circular" width={55} height={55} />
+                      <Skeleton variant="circular" width={50} height={50} />
                     )}
                   </Link>
                 </div>

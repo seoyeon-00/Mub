@@ -46,7 +46,6 @@ export const UserContextProvider = ({ children }: any) => {
   });
   const [token, setToken] = useState();
 
-  console.log(userData);
   useEffect(() => {
     setIsLoadingData(true);
     getUserInfo()
@@ -71,7 +70,6 @@ export const UserContextProvider = ({ children }: any) => {
       .finally(() => {
         setIsLoadingData(false);
       });
-    // }, [userData]);
   }, []);
 
   const value = {
