@@ -8,16 +8,16 @@ type MovieCardProps = {
 
 const MovieCard = ({ movie }: MovieCardProps) => {
   return (
-    <div className="">
+    <div>
       <Link href={`/movie/${movie.id}`}>
-        <div className="relative w-[full] h-[290px]">
+        <div className="relative w-[full] h-[290px] rounded overflow-hidden">
           <Image
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             fill
             alt={movie.title}
           />
         </div>
-        <div className="mt-2 font-medium">{movie.title}</div>
+        <div className="mt-2 font-medium text-fontSub">{movie.title}</div>
       </Link>
     </div>
   );

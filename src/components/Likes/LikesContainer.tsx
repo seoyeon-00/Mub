@@ -5,6 +5,7 @@ import { getMovieById } from "@/services/movie";
 import { useEffect, useState } from "react";
 import MovieCard from "../Common/MovieCard";
 import { Movie } from "@/types/movie";
+import MovieListComponent from "../Common/MovieListComponent";
 
 const LikesContainer = () => {
   const user = useUser();
@@ -24,21 +25,23 @@ const LikesContainer = () => {
         const movies = await Promise.all(promises ?? []);
         setData(movies);
       };
-
       fetchData();
     }
   }, [user]);
 
   return (
-    <div className="px-16 pt-[50px]">
-      <div className="text-xl font-semibold mb-5">좋아요 영화</div>
-      <div className="flex flex-wrap gap-5">
-        {data &&
-          data?.map((item, index) => (
-            <div key={`movie-${index}`} className="w-[20%]">
-              <MovieCard movie={item} />
-            </div>
-          ))}
+    <div className="px-16 pt-[100px]">
+      <div className="text-xl font-semibold">좋아요 영화</div>
+      <div>
+        {data ? (
+          <MovieListComponent>
+            {data.map((item, index) => (
+              <div key={`movie-${index}`}>
+                <MovieCard movie={item} />
+              </div>
+            ))}
+          </MovieListComponent>
+        ) : null}
       </div>
     </div>
   );

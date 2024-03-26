@@ -23,17 +23,3 @@ body {
   background-color: #151515;
   color: #c5c5c5;
 }
-
-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-body::-webkit-scrollbar-thumb {
-  height: 30%;
-  background: #555555;
-  border-radius: 10px;
-}
-
-body::-webkit-scrollbar-track {
-  background: rgba(248, 248, 248, 0.1);
-}
