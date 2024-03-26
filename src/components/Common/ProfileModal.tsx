@@ -81,7 +81,7 @@ const ProfileModal = () => {
           ))}
         </div>
         <div className="mt-5">
-          <Button text="변경" onClick={updateProfileHandler} />
+          <Button onClick={updateProfileHandler}>변경</Button>
         </div>
       </BasicModal>
     </>

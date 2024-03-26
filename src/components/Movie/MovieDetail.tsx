@@ -8,6 +8,7 @@ import Button from "../Common/Button";
 import Loading from "../Common/Loading";
 import useMovieLike from "@/hooks/useMovieLike";
 import Skeleton from "@mui/material/Skeleton";
+import HeartIcon from "../Common/icons/HeartIcon";
 
 interface MovieDetailProps {
   id: number;
@@ -77,7 +78,7 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
                 </div>
               )}
             </div>
-            <div className="px-10 flex flex-col justify-between">
+            <div className="px-10 flex flex-col justify-between w-full">
               <div className="font-bold text-2xl">
                 <span className="inline-block mr-2">{movieData?.title}</span>
                 {genreArray?.map((item, idx) => (
@@ -94,11 +95,18 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id }) => {
                 <div className="text-fontGray">{movieData?.overview}</div>
               </div>
               <div className="flex gap-2">
-                <Button text={"보러가기"} onClick={() => {}}></Button>
+                <Button onClick={() => {}}>보러가기</Button>
                 {!checkLikes ? (
-                  <Button text={"좋아요"} onClick={likesHandler}></Button>
+                  <Button onClick={likesHandler} style={"blank"}>
+                    <div className="flex gap-2 justify-center items-center">
+                      <span>
+                        <HeartIcon color="#e14c4c" width="18px" />
+                      </span>
+                      <span>찜하기</span>
+                    </div>
+                  </Button>
                 ) : (
-                  <Button text={"좋아요 해제"} onClick={likesHandler}></Button>
+                  <Button onClick={likesHandler}>찜 해제</Button>
                 )}
               </div>
             </div>

@@ -82,7 +82,7 @@ const LoginModal = () => {
             </div>
           </div>
           <div className="mt-5 w-full">
-            <Button text="로그인" onClick={loginEmailHandler} />
+            <Button onClick={loginEmailHandler}>로그인</Button>
           </div>
           <div className="text-fontGray text-center mt-4 text-sm">
             계정이 없으신가요?{" "}
