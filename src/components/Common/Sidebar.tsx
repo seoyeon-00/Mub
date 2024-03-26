@@ -44,7 +44,7 @@ const Sidebar = ({ children }: SidebarProps) => {
           <Image src="/images/logo.png" width={78} height={30} alt={"logo"} />
         </div>
         <nav className="mt-[200px]">
-          <ul className="flex flex-col gap-20 items-center">
+          <ul className="flex flex-col gap-24 items-center">
             <li>
               <Link href="/">
                 <Image

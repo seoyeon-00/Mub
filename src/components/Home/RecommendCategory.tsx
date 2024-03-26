@@ -10,9 +10,9 @@ type categoryProp = {
 
 const RecommendCategory = ({ category }: categoryProp) => {
   return (
-    <div className="py-[50px] px-[30px]">
+    <div className="py-[60px] px-[30px]">
       <ul className="flex gap-5">
-        <li className="bg-subBg w-[230px] h-[90px] rounded-md flex items-center justify-center gap-1">
+        <li className="bg-subBg w-[230px] h-[100px] rounded-md flex items-center justify-center gap-1">
           <span>
             <Image src="/images/logo.png" width={55} height={30} alt={"logo"} />
           </span>
