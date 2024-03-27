@@ -62,8 +62,10 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ id, movieData, video }) => {
               ))}
             </div>
             <div>
-              <div className="text-xl">{movieData?.tagline}</div>
-              <div className="text-fontGray">{movieData?.overview}</div>
+              <div className="text-xl font-semibold">{movieData?.tagline}</div>
+              <div className="text-fontGray line-clamp-5">
+                {movieData?.overview}
+              </div>
             </div>
             <div className="flex gap-2">
               <Button onClick={() => {}}>보러가기</Button>
