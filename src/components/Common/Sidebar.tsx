@@ -18,24 +18,6 @@ const Sidebar = ({ children }: SidebarProps) => {
     modalOpen();
   };
   const user = useUser();
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  const resizeHandler = () => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", resizeHandler);
-    return () => {
-      window.removeEventListener("resize", resizeHandler);
-    };
-  }, []);
 
   return (
     <div className="flex h-full">

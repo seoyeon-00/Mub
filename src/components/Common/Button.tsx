@@ -1,15 +1,22 @@
 type Button = {
-  text: string;
+  children: string | React.ReactNode;
   onClick: () => void;
+  style?: string;
 };
 
-const Button = ({ text, onClick }: Button) => {
+const Button = ({ children, onClick, style }: Button) => {
   return (
     <div
-      className="w-full py-3 border-point rounded text-center border-solid border-[1px] text-point font-medium text-sm"
+      className={`${
+        style === "blank"
+          ? "border-fontGray text-fontGray"
+          : "border-point  text-point"
+      }
+      w-full py-3 rounded text-center border-solid border-[1px] font-medium text-sm hover:-translate-y-1 transition-all  
+      `}
       onClick={onClick}
     >
-      {text}
+      {children}
     </div>
   );
 };

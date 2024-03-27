@@ -11,11 +11,15 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     <div>
       <Link href={`/movie/${movie.id}`}>
         <div className="relative w-[full] h-[290px] rounded overflow-hidden">
-          <Image
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            fill
-            alt={movie.title}
-          />
+          {movie.poster_path ? (
+            <Image
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              fill
+              alt={movie.title}
+            />
+          ) : (
+            <Image src="/images/preview.png" fill alt={movie.title} />
+          )}
         </div>
         <div className="mt-2 font-medium text-fontSub">{movie.title}</div>
       </Link>

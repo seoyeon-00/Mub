@@ -50,8 +50,8 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex flex-col w-[10%] gap-2">
-          <Button text="프로필 변경" onClick={() => modalOpen()} />
-          <Button text="로그아웃" onClick={logoutHandler} />
+          <Button onClick={() => modalOpen()}>프로필 변경</Button>
+          <Button onClick={logoutHandler}>로그아웃</Button>
         </div>
       </div>
     </>

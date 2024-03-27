@@ -2,7 +2,7 @@ import TextBar from "./TextBar";
 
 const Footer = () => {
   return (
-    <div className="text-fontGray py-5 text-sm leading-6">
+    <div className="text-fontGray px-16 py-7 text-sm leading-6">
       <ul>
         <li className="flex gap-4 items-center">
           <span className="font-semibold">MUB</span>

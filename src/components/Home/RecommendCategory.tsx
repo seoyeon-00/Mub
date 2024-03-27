@@ -3,6 +3,7 @@
 import Image from "next/image";
 import CategoryItem from "./CategoryItem";
 import { Category } from "@/types/types";
+import Link from "next/link";
 
 type categoryProp = {
   category: Category[];
@@ -21,7 +22,9 @@ const RecommendCategory = ({ category }: categoryProp) => {
         <li className="flex w-[calc(100% - 230px)] gap-5">
           {category.map((item, index) => (
             <div key={`category-${index}`}>
-              <CategoryItem name={item.name} imageUrl={item.imageUrl} />
+              <Link href={`/category/${item.id}`}>
+                <CategoryItem name={item.name} imageUrl={item.imageUrl} />
+              </Link>
             </div>
           ))}
         </li>
