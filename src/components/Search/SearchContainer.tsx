@@ -4,10 +4,12 @@ import { useState } from "react";
 import SearchInput from "../Common/SearchInput";
 import SearchList from "./SearchList";
 import { getSearchMovie } from "@/services/movie";
+import useSearch from "@/stores/useSearch";
 
 const SearchContainer = () => {
+  const { searchList, setSearchList } = useSearch();
   const [value, setValue] = useState<string>("");
-  const [searchData, setSearchData] = useState<any>([]);
+  const [searchData, setSearchData] = useState<any>(searchList || []);
   const [searchValue, setSearchValue] = useState<string>("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -17,9 +19,9 @@ const SearchContainer = () => {
   const searchHandler = async () => {
     try {
       const fetchData = await getSearchMovie(value, 1);
-      console.log(fetchData);
       setSearchValue(value);
       setSearchData(fetchData);
+      setSearchList(fetchData);
     } catch (error) {
       console.error("Error fetching search:", error);
     }
