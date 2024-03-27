@@ -17,14 +17,11 @@ const SwiperComponent = ({ children }: SwiperProps) => {
   return (
     <>
       <Swiper
-        loop={true}
+        loop={false}
         spaceBetween={15}
         slidesPerView={7}
         navigation={true}
-        autoplay={{
-          delay: 7500,
-          disableOnInteraction: false,
-        }}
+        autoplay={false}
       >
         {React.Children.map(children, (child, index) => (
           <SwiperSlide key={`swiper-slide-${index}`}>{child}</SwiperSlide>
