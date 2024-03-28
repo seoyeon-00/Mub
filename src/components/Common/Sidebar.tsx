@@ -6,7 +6,6 @@ import useLoginModal from "@/stores/useLoginModal";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "./Footer";
-import { useEffect, useState } from "react";
 
 interface SidebarProps {
   children: React.ReactNode;

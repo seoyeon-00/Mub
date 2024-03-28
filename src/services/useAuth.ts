@@ -41,7 +41,7 @@ export const useSignIn = async (
 
     if (!error) {
       toast.success("로그인 성공!");
-      router.push("/");
+      window.location.replace("/");
     } else {
       toast.error("로그인 실패.");
     }
@@ -79,7 +79,9 @@ export const useUserLogout = async () => {
 export const getUserInfo = async () => {
   const {
     data: { user },
+    error,
   } = await supabase.auth.getUser();
 
+  if (error) console.log("error", error);
   return user;
 };
