@@ -4,7 +4,6 @@ import useLoginModal from "@/stores/useLoginModal";
 import BasicModal from "./BasicModal";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
-import { supabase } from "@/libs/supabase/supabase";
 import Button from "./Button";
 import OAuthButton from "./OAuthButton";
 import GithubIcon from "./icons/GithubIcon";
@@ -12,6 +11,7 @@ import { useSignIn, useSignInWithOAuth } from "@/services/useAuth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
+import useLogin from "@/stores/useLogin";
 
 type inputType = {
   email: string;
@@ -20,6 +20,7 @@ type inputType = {
 
 const LoginModal = () => {
   const router = useRouter();
+  const { login } = useLogin();
   const { isOpen, modalClose } = useLoginModal();
   const [input, setInput] = useState<inputType>({
     email: "",
@@ -31,10 +32,17 @@ const LoginModal = () => {
   };
 
   // OAuth Githhub 로그인
-  const loginOAuthHandler = () => useSignInWithOAuth(router, "github");
+  const loginOAuthHandler = () => {
+    useSignInWithOAuth(router, "github");
+    login();
+  };
+
   // Email 로그인
-  const loginEmailHandler = () =>
+  const loginEmailHandler = () => {
     useSignIn(input.email, input.password, router);
+    modalClose();
+    login();
+  };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const data = {

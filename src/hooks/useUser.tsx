@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { getUserInfo } from "../services/useAuth";
 import { UserType } from "@/types/types";
 import { getUserById } from "@/services/user";
+import useLogin from "@/stores/useLogin";
+import { DEFAULT_USER_DATA } from "@/constants/initialData";
 
 type UserContextType = {
   user: {
@@ -21,36 +23,27 @@ export const UserContext = createContext<UserContextType | undefined>(
   undefined
 );
 
-export const UserContextProvider = ({ children }: any) => {
-  // 브라우저 환경에서 localStorage 사용
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const userString = localStorage.getItem(
-        "sb-oidufxfbxtmfkloiiigx-auth-token"
-      );
-      const userObj = JSON.parse(userString as string) || "";
-      setToken(userObj.access_token);
-    }
-  }, []);
+interface UserContextProviderProp {
+  children: React.ReactNode;
+}
 
-  const [isLoadingData, setIsLoadingData] = useState(false);
-  const [userData, setUserData] = useState<UserType>({
-    id: null,
-    email: null,
-    nickname: null,
-    likes: null,
-    profile: {
-      id: null,
-      image_url: null,
-    },
-  });
-  const [token, setToken] = useState();
+export const UserContextProvider: React.FC<UserContextProviderProp> = ({
+  children,
+}) => {
+  const { isLogin } = useLogin();
+  const [userData, setUserData] = useState<UserType>(DEFAULT_USER_DATA);
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    setIsLoadingData(true);
+    // 브라우저 환경에서 localStorage 사용
+    const userString = localStorage.getItem(
+      "sb-oidufxfbxtmfkloiiigx-auth-token"
+    );
+    const userObj = JSON.parse(userString as string) || "";
+
     getUserInfo()
       .then(async (user) => {
-        if (user) {
+        if (user && isLogin) {
           const userData = await getUserById(user.id);
           setUserData({
             id: user.id,
@@ -62,15 +55,16 @@ export const UserContextProvider = ({ children }: any) => {
               image_url: userData[0].profile_image.image_url,
             },
           });
+          setToken(userObj.access_token);
+        } else {
+          setUserData(DEFAULT_USER_DATA);
+          setToken(null);
         }
       })
       .catch((error) => {
         console.error("사용자 정보를 가져오는 중 에러가 발생했습니다:", error);
-      })
-      .finally(() => {
-        setIsLoadingData(false);
       });
-  }, []);
+  }, [isLogin]);
 
   const value = {
     user: {
@@ -82,6 +76,7 @@ export const UserContextProvider = ({ children }: any) => {
     },
     accessToken: token ?? null,
   };
+
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 

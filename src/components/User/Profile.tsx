@@ -8,15 +8,18 @@ import { useRouter } from "next/navigation";
 import useProfileModal from "@/stores/useProfileModal";
 import Image from "next/image";
 import Skeleton from "@mui/material/Skeleton";
+import useLogin from "@/stores/useLogin";
 
 const Profile = () => {
   const user = useUser();
+  const { logout } = useLogin();
   const router = useRouter();
   const { modalOpen } = useProfileModal();
 
   const logoutHandler = async () => {
     await useUserLogout();
     toast.success("로그아웃!");
+    logout();
     router.push("/");
   };
 
